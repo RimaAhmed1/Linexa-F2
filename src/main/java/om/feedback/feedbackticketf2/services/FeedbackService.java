@@ -19,4 +19,17 @@ public class FeedbackService {
         feedbackStore.put(generatedId, givenFeedback);
         return givenFeedback;
     }
+    //view all feedbacks
+    public HashMap<Long, Feedback> getAllFeedback() {
+        return feedbackStore;
+    }
+}
+//    public  Feedback getFeedback(String id) {
+//        for (Feedback currFeedbackObj : feedbackStore) {
+//            if (currFeedbackObj.id.equals(id)) {
+//                return currFeedbackObj;
+//            }
+//    }
+//        return null;
+    }
 }
