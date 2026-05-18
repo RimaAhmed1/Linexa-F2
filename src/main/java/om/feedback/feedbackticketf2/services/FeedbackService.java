@@ -20,16 +20,7 @@ public class FeedbackService {
         return givenFeedback;
     }
     //view all feedbacks
-    public HashMap<Long, Feedback> getAllFeedback() {
+    public HashMap<Long, Feedback> getAllFeedbacks() {
         return feedbackStore;
-    }
-}
-//    public  Feedback getFeedback(String id) {
-//        for (Feedback currFeedbackObj : feedbackStore) {
-//            if (currFeedbackObj.id.equals(id)) {
-//                return currFeedbackObj;
-//            }
-//    }
-//        return null;
     }
 }
