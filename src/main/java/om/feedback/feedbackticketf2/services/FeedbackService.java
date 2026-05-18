@@ -1,8 +1,6 @@
 package om.feedback.feedbackticketf2.services;
-
 import om.feedback.feedbackticketf2.models.Feedback;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -19,9 +17,13 @@ public class FeedbackService {
         feedbackStore.put(generatedId, givenFeedback);
         return givenFeedback;
     }
+
+    //view all feedbacks
+    public HashMap<Long, Feedback> getAllFeedbacks() {
+        return feedbackStore;
+
      //deleting feedback by id
     public Feedback deleteFeedback(Long id) {
       return feedbackStore.remove(id);
-
     }
 }

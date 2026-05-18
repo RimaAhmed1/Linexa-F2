@@ -1,11 +1,11 @@
 package om.feedback.feedbackticketf2.controllers;
-
 import om.feedback.feedbackticketf2.models.Feedback;
 import om.feedback.feedbackticketf2.services.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping(path = "/coffefeedbacks")
@@ -20,6 +20,10 @@ public class FeedbackController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFeedback);
     }
 
+    @GetMapping
+    public HashMap<Long, Feedback> getAll() {
+        return feedbackService.getAllFeedbacks();
+      
     //deleting feedback endpoint
     @DeleteMapping("/{id}")
     public ResponseEntity<Feedback> deleteSpecificFeedback(@PathVariable Long id) {
@@ -28,6 +32,7 @@ public class FeedbackController {
              return ResponseEntity.notFound().build();
          }
          return ResponseEntity.status(HttpStatus.OK).body(deletedFeedback);
+
     }
 }
 
