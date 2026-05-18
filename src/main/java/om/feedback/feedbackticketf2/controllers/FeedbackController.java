@@ -20,19 +20,12 @@ public class FeedbackController {
 
     //deleting feedback endpoint
     @DeleteMapping("/{id}")
-    public ResponseEntity<Feedback> deleteSpecificFeedback(
-@PathVariable Long id) {
-
-Feedback deletedFeedback =
-feedbackService.deleteFeedback(id);
-
-if (deletedFeedback == null) {
-return ResponseEntity.notFound().build();
-}
-
-return ResponseEntity
-.status(HttpStatus.OK)
-.body(deletedFeedback);
+    public ResponseEntity<Feedback> deleteSpecificFeedback(@PathVariable Long id) {
+        Feedback deletedFeedback = feedbackService.deleteFeedback(id);
+         if (deletedFeedback == null) {
+             return ResponseEntity.notFound().build();
+         }
+         return ResponseEntity.status(HttpStatus.OK).body(deletedFeedback);
     }
 }
 
