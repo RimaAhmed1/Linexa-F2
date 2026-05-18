@@ -24,6 +24,14 @@ public class FeedbackController {
     public HashMap<Long, Feedback> getAll() {
         return feedbackService.getAllFeedbacks();
     }
+
+    //Update Feedback
+    @PutMapping(path = "/{id}")
+    public Feedback updateFeedback(@PathVariable Long id, @RequestBody Feedback incomingFeedback) {
+
+        return feedbackService.updateFeedback(id, incomingFeedback);
+    }
+
     //deleting feedback endpoint
     @DeleteMapping("/{id}")
     public ResponseEntity<Feedback> deleteSpecificFeedback(@PathVariable Long id) {
