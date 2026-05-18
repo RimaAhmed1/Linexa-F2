@@ -13,22 +13,6 @@ import java.util.List;
 public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
-
-    //get all feedbacks
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(feedbackService.getAllFeedbacks());
-    }
-
-    // get the feedback by id
-    @GetMapping("/{id}")
-    public ResponseEntity<Feedback> getSpecificFeedback(@PathVariable Long id) {
-        Feedback foundFeedback = feedbackService.getFeedback(id);
-        if (foundFeedback == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(foundFeedback);
-    }
     // create feedback
     @PostMapping
     public ResponseEntity<Feedback> storeIncomingFeedback(

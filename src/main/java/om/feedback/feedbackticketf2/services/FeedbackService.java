@@ -15,25 +15,11 @@ public class FeedbackService {
     // generating uniq id
     private final AtomicLong counter = new AtomicLong();
 
-    //getting all feedback
-    public List<Feedback> getAllFeedbacks() {
-        return new ArrayList<>(feedbackStore.values());
-    }
-
-    //getting specific feedback by id
-    public Feedback getFeedback(Long id) {
-        return feedbackStore.get(id);
-    }
-
     // creating a new feedback
     public Feedback createFeedback(Feedback givenFeedback) {
         Long generatedId = counter.incrementAndGet();
         givenFeedback.setId(generatedId);
         feedbackStore.put(generatedId, givenFeedback);
         return givenFeedback;
-    }
-    // delete feedback
-    public Feedback removeFeedback(Long id) {
-        return feedbackStore.remove(id);
     }
 }
