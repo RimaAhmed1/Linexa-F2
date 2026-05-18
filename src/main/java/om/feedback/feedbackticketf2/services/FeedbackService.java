@@ -21,6 +21,7 @@ public class FeedbackService {
     //view all feedbacks
     public HashMap<Long, Feedback> getAllFeedbacks() {
         return feedbackStore;
+    }
 
      //deleting feedback by id
     public Feedback deleteFeedback(Long id) {

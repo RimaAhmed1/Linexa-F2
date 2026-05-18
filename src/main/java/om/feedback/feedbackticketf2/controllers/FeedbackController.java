@@ -23,7 +23,7 @@ public class FeedbackController {
     @GetMapping
     public HashMap<Long, Feedback> getAll() {
         return feedbackService.getAllFeedbacks();
-      
+    }
     //deleting feedback endpoint
     @DeleteMapping("/{id}")
     public ResponseEntity<Feedback> deleteSpecificFeedback(@PathVariable Long id) {
