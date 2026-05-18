@@ -19,4 +19,9 @@ public class FeedbackService {
         feedbackStore.put(generatedId, givenFeedback);
         return givenFeedback;
     }
+     //deleting feedback by id
+    public Feedback deleteFeedback(Long id) {
+      return feedbackStore.remove(id);
+
+    }
 }
