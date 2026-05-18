@@ -5,18 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 
 @RestController
-@RequestMapping(path="/coffefeedbacks")
+@RequestMapping(path = "/coffefeedbacks")
 public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
+
     // create feedback
     @PostMapping
-    public ResponseEntity<Feedback> storeIncomingFeedback(
-            @RequestBody Feedback incomingFeedback) {
+    public ResponseEntity<Feedback> storeIncomingFeedback(@RequestBody Feedback incomingFeedback) {
         Feedback createdFeedback = feedbackService.createFeedback(incomingFeedback);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFeedback);
     }
@@ -24,5 +23,16 @@ public class FeedbackController {
     @GetMapping
     public HashMap<Long, Feedback> getAll() {
         return feedbackService.getAllFeedbacks();
+      
+    //deleting feedback endpoint
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Feedback> deleteSpecificFeedback(@PathVariable Long id) {
+        Feedback deletedFeedback = feedbackService.deleteFeedback(id);
+         if (deletedFeedback == null) {
+             return ResponseEntity.notFound().build();
+         }
+         return ResponseEntity.status(HttpStatus.OK).body(deletedFeedback);
+
     }
 }
+
